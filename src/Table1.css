@@ -1,0 +1,40 @@
+.data-table {
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.data-table td.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+
+/* Wrapper to control height and scrolling */
+.data-table-wrapper {
+  max-height: 300px;
+  overflow-y: auto;
+}
