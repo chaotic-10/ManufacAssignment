@@ -1,6 +1,4 @@
-# Mantine Vite template
 
-Get started with the template by clicking `Use this template` button on the top of the page.
 
 <h2>Firstly, just Clone the Project And Do yarn i to install dependecies</h2>
 <H2>Secondly, write following command to run the vite engine : Yarn run dev</H2>
