@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Table } from '@mantine/core';
+import { Table, Text, Loader } from '@mantine/core';
 import useApiFetch from './useApiFetch';
 
 const TableData = () => {
@@ -28,28 +28,34 @@ const TableData = () => {
     return yearStats;
   }, [data]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <Loader />;
+  if (error) return <Text color="red">Error: {error}</Text>;
 
   return (
-    <Table>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>Year</Table.Th>
-          <Table.Th>Maximum Crop Production (Tonnes)</Table.Th>
-          <Table.Th>Minimum Crop Production (Tonnes)</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
+    <Table striped highlightOnHover withBorder withColumnBorders>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Maximum Crop Production (Tonnes)</th>
+          <th>Minimum Crop Production (Tonnes)</th>
+        </tr>
+      </thead>
       <tbody>
-        {processedData.map((item, index) => (
-          <Table.Tr key={index}>
-            <Table.Td>{item.year}</Table.Td>
-            <Table.Td>{item.maxCropProduction}</Table.Td>
-            <Table.Td>{item.minCropProduction}</Table.Td>
-          </Table.Tr>
-        ))}
+        {processedData.length === 0 ? (
+          <tr>
+            <td colSpan="3" style={{ textAlign: 'center' }}>No data available</td>
+          </tr>
+        ) : (
+          processedData.map((item, index) => (
+            <tr key={index}>
+              <td>{item.year}</td>
+              <td>{item.maxCropProduction}</td>
+              <td>{item.minCropProduction}</td>
+            </tr>
+          ))
+        )}
       </tbody>
-    </Table >
+    </Table>
   );
 };
 
